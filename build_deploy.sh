@@ -6,19 +6,20 @@ set -exv
 
 CURRENT_DIR=$(dirname $0)
 
-IMAGE="quay.io/app-sre/quay-service-tool"
-TAG_GIT_HASH=`git rev-parse --short=7 HEAD`
-TAG_LATEST="latest"
+BASE_IMG="quay-service-tool"
+QUAY_IMAGE="quay.io/app-sre/${BASE_IMG}"
+IMG="${BASE_IMG}:latest"
+
+GIT_HASH=`git rev-parse --short=7 HEAD`
 
 # build the image
-docker build -t "${IMAGE}:${TAG_LATEST}" -f Dockerfile .
+docker build -t "${IMG}" -f Dockerfile .
 
-# push the image to quay (Latest)
+# push the image to quay
 skopeo copy --dest-creds "${QUAY_USER}:${QUAY_TOKEN}" \
-    "containers-storage:${IMAGE}:${TAG_LATEST}" \
-    "docker://${IMAGE}:${TAG_LATEST}"
+    "containers-storage:${IMG}" \
+    "docker://${QUAY_IMAGE}:latest"
 
-# push the image to quey (Git Hash)
 skopeo copy --dest-creds "${QUAY_USER}:${QUAY_TOKEN}" \
-    "containers-storage:${IMAGE}:${TAG_LATEST}" \
-    "docker://${IMAGE}:${TAG_GIT_HASH}"
+    "containers-storage:${IMG}" \
+    "docker://${QUAY_IMAGE}:${GIT_HASH}"

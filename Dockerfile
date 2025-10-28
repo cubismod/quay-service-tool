@@ -1,4 +1,4 @@
-FROM registry.redhat.io/rhel8/nodejs-16 AS nodebuild
+FROM registry.redhat.io/rhel8/nodejs-16 as nodebuild
 
 ENV APP_ROOT=/frontend \
     HOME=/frontend \

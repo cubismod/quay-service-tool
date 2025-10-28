@@ -1,7 +1,8 @@
 #!/bin/bash
 set -exv
 
-IMAGE="quay.io/app-sre/quay-service-tool"
-TAG_PR_CHECK="pr-check"
+BASE_IMG="quay-service-tool"
 
-docker build -t "${IMAGE}:${TAG_PR_CHECK}" -f Dockerfile .
+IMG="${BASE_IMG}:pr-check"
+
+docker build -t "${IMG}" -f Dockerfile .
