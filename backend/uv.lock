@@ -33,6 +33,7 @@ dependencies = [
     { name = "psycopg2-binary" },
     { name = "pymysql" },
     { name = "python-keycloak" },
+    { name = "python-redis-lock" },
     { name = "quay" },
     { name = "resumablesha256" },
     { name = "supervisor" },
@@ -67,6 +68,7 @@ requires-dist = [
     { name = "psycopg2-binary", specifier = ">=2.9.10" },
     { name = "pymysql", specifier = "==1.1.1" },
     { name = "python-keycloak", specifier = ">=4.0.0" },
+    { name = "python-redis-lock", specifier = ">=4.0.0" },
     { name = "quay", git = "https://github.com/quay/quay.git?rev=3f2fba1ab5f93d0b6bfeba93e437fabb68d97237" },
     { name = "resumablesha256", specifier = "==1.0" },
     { name = "supervisor", specifier = "==4.3.0" },
@@ -1331,6 +1333,18 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/67/e3/963aae33e9177b496def0ba47d2290391e9391d9f76a3f69cfde8c44c8b8/python_keycloak-7.1.1.tar.gz", hash = "sha256:38973e54694a656fe6f3f8fc2af0b89c78136863f928261f0d243445e9e486bc", size = 78907, upload-time = "2026-02-15T08:45:58.139Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/bc/9f/569a8bbdb0859498d33d8b86273bc82849bd0b445ac01416ad34996ca3d8/python_keycloak-7.1.1-py3-none-any.whl", hash = "sha256:d8295bec6c4805ab7335b03bc92753c8c6258d5511b080cac061da20ae77f61c", size = 87607, upload-time = "2026-02-15T08:45:57.054Z" },
+]
+
+[[package]]
+name = "python-redis-lock"
+version = "4.0.1"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "redis" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/49/a3/1c5872ce7dafef9b4f31fbbf54938d9be632e3b7d53146b0eac26150ec97/python_redis_lock-4.0.1.tar.gz", hash = "sha256:57995e13dce196301138d710d4f132d667c200cd814718e081bf299d6cf11d70", size = 164986, upload-time = "2026-04-08T15:41:18.551Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/a7/b5/d2bb0d46b31620753ba2c976f97fb24d7e0f2fb1390a911f632d43fe1c1b/python_redis_lock-4.0.1-py3-none-any.whl", hash = "sha256:1d39f579ff3f96d7c14e523680951aa60eb4d397f4ad1bc72a3440b7460d18d5", size = 12358, upload-time = "2026-04-08T15:41:16.822Z" },
 ]
 
 [[package]]
