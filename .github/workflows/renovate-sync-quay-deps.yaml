@@ -1,0 +1,34 @@
+name: Renovate sync quay deps
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - backend/pyproject.toml
+
+permissions:
+  contents: write
+
+jobs:
+  sync-quay-deps:
+    if: >
+      startsWith(github.head_ref, 'konflux/mintmaker/') &&
+      github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - uses: astral-sh/setup-uv@v5
+
+      - name: Sync quay upstream deps
+        run: ./scripts/sync-quay-deps.sh
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add backend/pyproject.toml backend/uv.lock
+          git diff --cached --quiet || git commit -m "chore(deps): sync quay upstream deps"
+          git push

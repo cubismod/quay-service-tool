@@ -3,5 +3,6 @@
   "extends": [
     "github>quay/quay-konflux-configs",
     "github>quay/quay-konflux-configs//renovate-presets/quay-uv"
-  ]
+  ],
+  "gitIgnoredAuthors": ["github-actions[bot]@users.noreply.github.com"]
 }
