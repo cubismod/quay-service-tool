@@ -74,8 +74,7 @@ ENTRYPOINT ["gunicorn", "-k", "gevent", "-b", "0.0.0.0:5000", "--limit-request-f
 
 FROM backend-base AS production
 
-ENV SERVICETOOL_RUN=/conf \
-    SERVICETOOL_LOGGING=syslog
+ENV SERVICETOOL_RUN=/conf
 
 COPY --chown=1001:0 ./conf /conf
 COPY --from=frontend-build --chown=1001:0 /frontend/dist /backend/static

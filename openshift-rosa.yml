@@ -55,9 +55,6 @@ parameters:
   value: "128Mi"
 - name: QUAY_RESOURCES_LIMITS_MEMORY
   value: "256Mi"
-- name: SERVICETOOL_LOGGING
-  value: "syslog"
-  displayName: Service tool logging method
 objects:
 - apiVersion: apps/v1
   kind: Deployment
@@ -105,8 +102,6 @@ objects:
           env:
           - name: CONFIG_PATH
             value: ${{CONFIG_MOUNT_PATH}}
-          - name: SERVICETOOL_LOGGING
-            value: ${{SERVICETOOL_LOGGING}}
           livenessProbe:
             httpGet:
               path: /healthcheck
